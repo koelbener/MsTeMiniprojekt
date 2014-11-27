@@ -5,50 +5,111 @@ using System.Text;
 namespace AutoReservation.Common.DataTransferObjects
 {
     [DataContract]
-    public class KundeDto //: DtoBase
+    public class KundeDto : DtoBase
     {
+        private DateTime geburtsdatum;
+        private int id;
+        private String nachname;
+        private String vorname;
 
-        //public override string Validate()
-        //{
-        //    StringBuilder error = new StringBuilder();
-        //    if (string.IsNullOrEmpty(Nachname))
-        //    {
-        //        error.AppendLine("- Nachname ist nicht gesetzt.");
-        //    }
-        //    if (string.IsNullOrEmpty(Vorname))
-        //    {
-        //        error.AppendLine("- Vorname ist nicht gesetzt.");
-        //    }
-        //    if (Geburtsdatum == DateTime.MinValue)
-        //    {
-        //        error.AppendLine("- Geburtsdatum ist nicht gesetzt.");
-        //    }
+        [DataMember]
+        public int Id
+        {
+            get { return id; }
+            set
+            {
+                if (!id.Equals(value))
+                {
+                    this.id = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
-        //    if (error.Length == 0) { return null; }
+        [DataMember]
+        public String Nachname
+        {
+            get { return nachname; }
+            set
+            {
+                if (!nachname.Equals(value))
+                {
+                    this.nachname = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
-        //    return error.ToString();
-        //}
+        [DataMember]
+        public String Vorname
+        {
+            get { return vorname; }
+            set
+            {
+                if (!vorname.Equals(value))
+                {
+                    this.vorname = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
-        //public override object Clone()
-        //{
-        //    return new KundeDto
-        //    {
-        //        Id = Id,
-        //        Nachname = Nachname,
-        //        Vorname = Vorname,
-        //        Geburtsdatum = Geburtsdatum
-        //    };
-        //}
+        [DataMember]
+        public DateTime Geburtsdatum
+        {
+            get { return geburtsdatum; }
+            set
+            {
+                if (!geburtsdatum.Equals(geburtsdatum))
+                {
+                    this.geburtsdatum = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
-        //public override string ToString()
-        //{
-        //    return string.Format(
-        //        "{0}; {1}; {2}; {3}",
-        //        Id,
-        //        Nachname,
-        //        Vorname,
-        //        Geburtsdatum);
-        //}
+
+        public override string Validate()
+        {
+            StringBuilder error = new StringBuilder();
+            if (string.IsNullOrEmpty(Nachname))
+            {
+                error.AppendLine("- Nachname ist nicht gesetzt.");
+            }
+            if (string.IsNullOrEmpty(Vorname))
+            {
+                error.AppendLine("- Vorname ist nicht gesetzt.");
+            }
+            if (Geburtsdatum == DateTime.MinValue)
+            {
+                error.AppendLine("- Geburtsdatum ist nicht gesetzt.");
+            }
+
+            if (error.Length == 0) { return null; }
+
+            return error.ToString();
+        }
+
+        public override object Clone()
+        {
+            return new KundeDto
+            {
+                id = id,
+                nachname = nachname,
+                vorname = vorname,
+                geburtsdatum = geburtsdatum
+            };
+        }
+
+        public override string ToString()
+        {
+            return string.Format(
+                "{0}; {1}; {2}; {3}",
+                id,
+                nachname,
+                vorname,
+                geburtsdatum);
+        }
 
     }
 }

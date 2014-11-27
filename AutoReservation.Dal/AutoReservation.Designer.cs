@@ -1,4 +1,4 @@
-﻿// Die T4-Codegenerierung ist für Modell 'C:\Users\lukas\Documents\Schule\HSR\HS2014\MsTe\02-Uebung\8 Miniprojekt\8 Miniprojekt\Vorgabe\AutoReservation.Dal\AutoReservation.edmx' aktiviert. 
+﻿// Die T4-Codegenerierung ist für Modell 'C:\Users\lukas\Documents\Schule\HSR\HS2014\MsTe\02-Uebung\8 Miniprojekt\8 Miniprojekt\Vorgabe\MsTeMiniprojekt\AutoReservation.Dal\AutoReservation.edmx' aktiviert. 
 // Um die Generierung von Legacycode zu aktivieren, ändern Sie den Wert der Designer-Eigenschaft 'Code Generation Strategy'
 // in 'Legacy ObjectContext'. Diese Eigenschaft wird im Eigenschaftenfenster angezeigt, wenn das Modell
 // im Designer geöffnet ist.

@@ -7,7 +7,7 @@
       <Diagram DiagramId="3251b10818094e229289b09a6dd3d722" Name="Diagram1">
         <EntityTypeShape EntityType="AutoReservationModel.Auto" Width="1.5" PointX="4.375" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AutoReservationModel.Kunde" Width="1.5" PointX="7.375" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoReservationModel.Reservation" Width="1.5" PointX="4.375" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoReservationModel.Reservation" Width="1.5" PointX="4.375" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="AutoReservationModel.FK_Reservation_Auto" ManuallyRouted="false" />
         <AssociationConnector Association="AutoReservationModel.FK_Reservation_Kunde" ManuallyRouted="false" />
         <EntityTypeShape EntityType="AutoReservationModel.LuxusKlasseAuto" Width="2.625" PointX="1.125" PointY="6.625" />
