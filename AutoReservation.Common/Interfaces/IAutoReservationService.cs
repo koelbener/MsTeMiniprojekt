@@ -13,7 +13,7 @@ namespace AutoReservation.Common.Interfaces
          */
 
         [OperationContract]
-        List<AutoDto> GetAllAutos();
+        IList<AutoDto> GetAllAutos();
         
         [OperationContract]
         AutoDto getAuto(int id);
@@ -33,7 +33,7 @@ namespace AutoReservation.Common.Interfaces
          */
 
         [OperationContract]
-        List<KundeDto> GetAllKunden();
+        IList<KundeDto> GetAllKunden();
 
         [OperationContract]
         KundeDto getKunde(int id);
@@ -52,7 +52,7 @@ namespace AutoReservation.Common.Interfaces
         */
 
         [OperationContract]
-        List<ReservationDto> GetAllReservationen();
+        IList<ReservationDto> GetAllReservationen();
 
         [OperationContract]
         ReservationDto getReservation(int id);

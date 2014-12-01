@@ -9,7 +9,7 @@ namespace AutoReservation.Service.Wcf
     public class AutoReservationService : IAutoReservationService
     {
 
-        public List<AutoDto> GetAllAutos()
+        public IList<AutoDto> GetAllAutos()
         {
             throw new NotImplementedException();
         }
@@ -34,7 +34,7 @@ namespace AutoReservation.Service.Wcf
             throw new NotImplementedException();
         }
 
-        public List<KundeDto> GetAllKunden()
+        public IList<KundeDto> GetAllKunden()
         {
             throw new NotImplementedException();
         }
@@ -59,7 +59,7 @@ namespace AutoReservation.Service.Wcf
             throw new NotImplementedException();
         }
 
-        public List<ReservationDto> GetAllReservationen()
+        public IList<ReservationDto> GetAllReservationen()
         {
             throw new NotImplementedException();
         }
