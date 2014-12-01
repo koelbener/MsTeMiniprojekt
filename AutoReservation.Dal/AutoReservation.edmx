@@ -11,7 +11,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Marke" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="AutoKlasse" Type="int" Nullable="false" />
+          <Property Name="AutoKlasse" Type="int" Nullable="false" DefaultValue="0" />
           <Property Name="Tagestarif" Type="int" Nullable="false" />
           <Property Name="Basistarif" Type="int" />
         </EntityType>
@@ -169,6 +169,7 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Tagestarif" ColumnName="Tagestarif" />
                 <ScalarProperty Name="Marke" ColumnName="Marke" />
+                <Condition ColumnName="AutoKlasse" IsNull="1"/> <!-- TODO: is this correct? Added to fix compile error. Does Auto needs to be abstract?-->
               </MappingFragment>
             </EntityTypeMapping>
             <EntityTypeMapping TypeName="IsTypeOf(AutoReservationModel.LuxusklasseAuto)">
