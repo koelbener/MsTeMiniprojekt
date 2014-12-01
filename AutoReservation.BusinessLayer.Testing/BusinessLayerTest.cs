@@ -1,4 +1,5 @@
-﻿using AutoReservation.TestEnvironment;
+﻿using AutoReservation.Dal;
+using AutoReservation.TestEnvironment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -30,7 +31,14 @@ namespace AutoReservation.BusinessLayer.Testing
         [TestMethod]
         public void UpdateAutoTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+        }
+
+        [TestMethod]
+        public void ReadAutoTest()
+        {
+            Assert.AreEqual("Fiat Punto", Target.getAuto(1).Marke);
+            Assert.AreEqual("50", Target.getAuto(1).Tagestarif);
+            Assert.IsTrue(Target.getAuto(1).GetType() == typeof(StandardAuto));
         }
 
         [TestMethod]
