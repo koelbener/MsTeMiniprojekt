@@ -152,10 +152,10 @@
             <End Role="Reservation" EntitySet="Reservationen" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="LuxusKlasseAuto" BaseType="AutoReservationModel.Auto" >
+        <EntityType Name="LuxusklasseAuto" BaseType="AutoReservationModel.Auto" >
           <Property Name="Basistarif" Type="Int32" />
         </EntityType>
-        <EntityType Name="MitelklasseAuto" BaseType="AutoReservationModel.Auto" />
+        <EntityType Name="MittelklasseAuto" BaseType="AutoReservationModel.Auto" />
         <EntityType Name="StandardAuto" BaseType="AutoReservationModel.Auto" />
       </Schema>
     </edmx:ConceptualModels>
@@ -171,14 +171,14 @@
                 <ScalarProperty Name="Marke" ColumnName="Marke" />
               </MappingFragment>
             </EntityTypeMapping>
-            <EntityTypeMapping TypeName="IsTypeOf(AutoReservationModel.LuxusKlasseAuto)">
+            <EntityTypeMapping TypeName="IsTypeOf(AutoReservationModel.LuxusklasseAuto)">
               <MappingFragment StoreEntitySet="Auto">
                 <ScalarProperty Name="Basistarif" ColumnName="Basistarif" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <Condition ColumnName="AutoKlasse" Value="0" />
               </MappingFragment>
             </EntityTypeMapping>
-            <EntityTypeMapping TypeName="IsTypeOf(AutoReservationModel.MitelklasseAuto)">
+            <EntityTypeMapping TypeName="IsTypeOf(AutoReservationModel.MittelklasseAuto)">
               <MappingFragment StoreEntitySet="Auto">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <Condition ColumnName="AutoKlasse" Value="1" />

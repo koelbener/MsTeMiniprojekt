@@ -12,7 +12,7 @@ namespace AutoReservation.Dal
     using System;
     using System.Collections.Generic;
     
-    public partial class LuxusKlasseAuto : Auto
+    public partial class LuxusklasseAuto : Auto
     {
         public Nullable<int> Basistarif { get; set; }
     }
