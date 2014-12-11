@@ -10,7 +10,6 @@ namespace AutoReservation.BusinessLayer.Testing
     public class BusinessLayerTest
     {
         private AutoReservationBusinessComponent target;
-        private AutoReservationEntities context;
         private AutoReservationBusinessComponent Target
         {
             get
@@ -28,20 +27,11 @@ namespace AutoReservation.BusinessLayer.Testing
         public void InitializeTestData()
         {
             TestEnvironmentHelper.InitializeTestData();
-
-            context = new AutoReservationEntities();
         }
         
         [TestMethod]
         public void UpdateAutoTest()
-        { 
-            Auto autoBefore = Target.getAuto(1);
-            autoBefore.Marke = "Mercedes";        
-            context.SaveChanges();
-
-            Auto autoChanged = Target.getAuto(1);
-            Assert.AreEqual(autoBefore, autoChanged);
-            Assert.AreEqual(autoChanged.Marke, "Mercedes");
+        {
         }
 
         [TestMethod]
