@@ -32,6 +32,11 @@ namespace AutoReservation.BusinessLayer.Testing
         [TestMethod]
         public void UpdateAutoTest()
         {
+            Auto auto = Target.getAuto(1);
+            auto.Marke = "BMW";
+            Target.updateAuto(Target.getAuto(1), auto);
+
+            Assert.AreEqual("BMW", Target.getAuto(1).Marke);
         }
 
         [TestMethod]
@@ -45,13 +50,21 @@ namespace AutoReservation.BusinessLayer.Testing
         [TestMethod]
         public void UpdateKundeTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            Kunde kunde = Target.getKunde(1);
+            kunde.Vorname = "Foobar";
+            Target.updateKunde(Target.getKunde(1), kunde);
+
+            Assert.AreEqual("Foobar", Target.getKunde(1).Vorname);
         }
 
         [TestMethod]
         public void UpdateReservationTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            Reservation reservation = Target.getReservation(1);
+            reservation.Bis = new DateTime(2016, 01, 01);
+            Target.updateReservation(Target.getReservation(1), reservation);
+
+            Assert.AreEqual(new DateTime(2016, 01, 01), Target.getReservation(1).Bis);
         }
 
     }
