@@ -10,7 +10,7 @@ namespace AutoReservation.Service.Wcf.Host
             Console.WriteLine("AutoReservationService starting.");
             
             //Instantiate new ServiceHost 
-            ServiceHost host = new ServiceHost(typeof(AutoReservationService));
+            ServiceHost host = new ServiceHost(typeof(AutoReservationServiceRemote));
 
             //Open myServiceHost
             host.Open();

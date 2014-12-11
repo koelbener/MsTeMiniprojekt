@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4E40A29-915E-4BD6-A2F2-D0FD3FC57542}"
 	ProjectSection(SolutionItems) = preProject
@@ -16,6 +16,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoReservation.Ui", "AutoReservation.Ui\AutoReservation.Ui.csproj", "{89694D5D-6F27-4AAF-97DA-F678599A34E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoReservation.BusinessLayer", "AutoReservation.BusinessLayer\AutoReservation.BusinessLayer.csproj", "{1F53D0EF-0521-4155-835C-C2A04D9FE5DE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{22972439-3FFF-41D2-B5AE-6C06ABC66EB4} = {22972439-3FFF-41D2-B5AE-6C06ABC66EB4}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoReservation.Dal", "AutoReservation.Dal\AutoReservation.Dal.csproj", "{AB98AC63-032F-4050-9755-1E2235E9F1DD}"
 EndProject

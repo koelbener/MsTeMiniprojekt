@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 
 namespace AutoReservation.Ui.Factory
@@ -10,8 +11,17 @@ namespace AutoReservation.Ui.Factory
     {
         public IAutoReservationService CreateInstance()
         {
-            return null;
-            // TODO implement me
+            
+            // TODO
+            BasicHttpBinding myBinding = new BasicHttpBinding();
+
+            // TODO
+            EndpointAddress myEndpoint = new EndpointAddress("http://localhost/MathService/Ep1");
+
+            ChannelFactory<IAutoReservationService> myChannelFactory = new ChannelFactory<IAutoReservationService>(myBinding, myEndpoint);
+
+            // Create a channel.
+            return myChannelFactory.CreateChannel();
         }
     }
 }

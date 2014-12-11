@@ -1,7 +1,9 @@
 ﻿using AutoReservation.Common.Interfaces;
+using AutoReservation.Service.Wcf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 
 namespace AutoReservation.Ui.Factory
@@ -10,8 +12,7 @@ namespace AutoReservation.Ui.Factory
     {
         public IAutoReservationService CreateInstance()
         {
-            return null;
-            // TODO implement me
+            return new AutoReservationServiceRemote();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace AutoReservation.Service.Wcf.Testing
         [ClassInitialize]
         public static void Setup(TestContext context)
         {
-            serviceHost = new ServiceHost(typeof(AutoReservationService));
+            serviceHost = new ServiceHost(typeof(AutoReservationServiceRemote));
             serviceHost.Open();
         }
 

@@ -22,60 +22,104 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void AutosTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            IList<AutoDto> allAutos = Target.GetAllAutos();
+            Assert.IsTrue(allAutos.Count > 0);
         }
 
         [TestMethod]
         public void KundenTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            IList<KundeDto> allKunden = Target.GetAllKunden();
+            Assert.IsTrue(allKunden.Count > 0);
         }
 
         [TestMethod]
         public void ReservationenTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            IList<ReservationDto> allRes = Target.GetAllReservationen();
+            Assert.IsTrue(allRes.Count > 0);
         }
 
         [TestMethod]
         public void GetAutoByIdTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            Assert.AreEqual("Fiat Punto", Target.getAuto(1).Marke);
         }
 
         [TestMethod]
         public void GetKundeByIdTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            // TODO change Kundenvorname to correct name
+            Assert.AreEqual("Kundenvorname", Target.getKunde(1).Nachname);
         }
 
         [TestMethod]
         public void GetReservationByNrTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            // TODO fix correct auto id in getAuto()
+            Assert.AreEqual(Target.getAuto(1), Target.getReservation(1).Auto);
+            Assert.AreEqual("Von", Target.getReservation(1).Von);
+            Assert.AreEqual("Bis", Target.getReservation(1).Bis);
         }
 
         [TestMethod]
         public void GetReservationByIllegalNr()
         {
+            // TODO
             Assert.Inconclusive("Test wurde noch nicht implementiert!");
         }
 
         [TestMethod]
         public void InsertAutoTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            AutoDto auto = new AutoDto();
+            auto.Marke="Bugatti";
+            auto.Tagestarif=1000;
+            auto.Id = 999;
+            Target.addAuto(auto);
+
+            AutoDto saved = Target.getAuto(999);
+            Assert.AreEqual(999, saved.Id);
+            Assert.AreEqual("Bugatti", saved.Marke);
+            Assert.AreEqual(1000, saved.Tagestarif);
         }
 
         [TestMethod]
         public void InsertKundeTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            KundeDto kunde = new KundeDto();
+            kunde.Id = 999;
+            kunde.Nachname = "Avsar";
+            kunde.Vorname = "Emre";
+            kunde.Geburtsdatum = new DateTime(1992, 04, 10);
+
+            Target.addKunde(kunde);
+
+            KundeDto saved = Target.getKunde(999);
+            Assert.AreEqual(999, saved.Id);
+            Assert.AreEqual("Emre", saved.Vorname);
+            Assert.AreEqual("Avsar", saved.Nachname);
+            Assert.AreEqual(new DateTime(1992, 04, 10), saved.Geburtsdatum);
         }
 
         [TestMethod]
         public void InsertReservationTest()
         {
+            ReservationDto reservation = new ReservationDto();
+            reservation.ReservationNr = 999;
+            reservation.Kunde = Target.getKunde(999);
+            reservation.Auto = Target.getAuto(999);
+            reservation.Von = new DateTime(2014, 01, 01);
+            reservation.Bis = new DateTime(2015, 01, 01);
+
+            Target.addReservation(reservation);
+
+            ReservationDto saved = Target.getReservation(999);
+            Assert.AreEqual(999, saved.ReservationNr);
+            Assert.AreEqual(999, saved.Auto.Id);
+            Assert.AreEqual(new DateTime(2014, 01, 01), saved.Von);
+            Assert.AreEqual(new DateTime(2015, 01, 01), saved.Bis);
+
             Assert.Inconclusive("Test wurde noch nicht implementiert!");
         }
 
@@ -118,19 +162,22 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void DeleteKundeTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            Target.deleteKunde(Target.getKunde(999));
+            Assert.IsNull(Target.getKunde(999));
         }
 
         [TestMethod]
         public void DeleteAutoTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            Target.deleteAuto(Target.getAuto(999));
+            Assert.IsNull(Target.getAuto(999));
         }
 
         [TestMethod]
         public void DeleteReservationTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            Target.deleteReservation(Target.getReservation(999));
+            Assert.IsNull(Target.getReservation(999));
         }
     }
 }
