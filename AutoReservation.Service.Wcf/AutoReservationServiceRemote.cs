@@ -16,77 +16,77 @@ namespace AutoReservation.Service.Wcf
             businessComponent = new AutoReservationBusinessComponent();
         }
 
-        public IList<AutoDto> GetAllAutos()
+        public IList<AutoDto> Autos()
         {
             return businessComponent.getAutos().ConvertToDtos();
         }
 
-        public AutoDto getAuto(int id)
+        public AutoDto GetAuto(int id)
         {
             return businessComponent.getAuto(id).ConvertToDto();
         }
 
-        public void addAuto(AutoDto auto)
+        public void InsertAuto(AutoDto auto)
         {
             businessComponent.addAuto(auto.ConvertToEntity());
         }
 
-        public void updateAuto(AutoDto original, AutoDto modified)
+        public void UpdateAuto(AutoDto original, AutoDto modified)
         {
             businessComponent.updateAuto(original.ConvertToEntity(), modified.ConvertToEntity());
         }
 
-        public void deleteAuto(AutoDto auto)
+        public void DeleteAuto(AutoDto auto)
         {
             businessComponent.deleteAuto(auto.ConvertToEntity());
         }
 
-        public IList<KundeDto> GetAllKunden()
+        public IList<KundeDto> Kunden()
         {
             return businessComponent.getKunden().ConvertToDtos();
         }
 
-        public KundeDto getKunde(int id)
+        public KundeDto GetKunde(int id)
         {
             return businessComponent.getKunde(id).ConvertToDto();
         }
 
-        public void addKunde(KundeDto kunde)
+        public void InsertKunde(KundeDto kunde)
         {
             businessComponent.addKunde(kunde.ConvertToEntity());
         }
 
-        public void updateKunde(KundeDto original, KundeDto modified)
+        public void UpdateKunde(KundeDto original, KundeDto modified)
         {
             businessComponent.updateKunde(original.ConvertToEntity(), modified.ConvertToEntity());
         }
 
-        public void deleteKunde(KundeDto kunde)
+        public void DeleteKunde(KundeDto kunde)
         {
             businessComponent.deleteKunde(kunde.ConvertToEntity());
         }
 
-        public IList<ReservationDto> GetAllReservationen()
+        public IList<ReservationDto> Reservationen()
         {
             return businessComponent.getReservationen().ConvertToDtos();
         }
 
-        public ReservationDto getReservation(int id)
+        public ReservationDto GetReservation(int id)
         {
             return businessComponent.getReservation(id).ConvertToDto();
         }
 
-        public void addReservation(ReservationDto reservation)
+        public void InsertReservation(ReservationDto reservation)
         {
             businessComponent.addReservation(reservation.ConvertToEntity());
         }
 
-        public void updateReservation(ReservationDto original, ReservationDto modified)
+        public void UpdateReservation(ReservationDto original, ReservationDto modified)
         {
             businessComponent.updateReservation(original.ConvertToEntity(), modified.ConvertToEntity());
         }
 
-        public void deleteReservation(ReservationDto auto)
+        public void DeleteReservation(ReservationDto auto)
         {
             businessComponent.deleteReservation(auto.ConvertToEntity());
         }

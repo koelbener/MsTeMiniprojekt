@@ -22,44 +22,44 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void AutosTest()
         {
-            IList<AutoDto> allAutos = Target.GetAllAutos();
+            IList<AutoDto> allAutos = Target.Autos();
             Assert.IsTrue(allAutos.Count > 0);
         }
 
         [TestMethod]
         public void KundenTest()
         {
-            IList<KundeDto> allKunden = Target.GetAllKunden();
+            IList<KundeDto> allKunden = Target.Kunden();
             Assert.IsTrue(allKunden.Count > 0);
         }
 
         [TestMethod]
         public void ReservationenTest()
         {
-            IList<ReservationDto> allRes = Target.GetAllReservationen();
+            IList<ReservationDto> allRes = Target.Reservationen();
             Assert.IsTrue(allRes.Count > 0);
         }
 
         [TestMethod]
         public void GetAutoByIdTest()
         {
-            Assert.AreEqual("Fiat Punto", Target.getAuto(1).Marke);
+            Assert.AreEqual("Fiat Punto", Target.GetAuto(1).Marke);
         }
 
         [TestMethod]
         public void GetKundeByIdTest()
         {
             // TODO change Kundenvorname to correct name
-            Assert.AreEqual("Kundenvorname", Target.getKunde(1).Nachname);
+            Assert.AreEqual("Kundenvorname", Target.GetKunde(1).Nachname);
         }
 
         [TestMethod]
         public void GetReservationByNrTest()
         {
             // TODO fix correct auto id in getAuto()
-            Assert.AreEqual(Target.getAuto(1), Target.getReservation(1).Auto);
-            Assert.AreEqual("Von", Target.getReservation(1).Von);
-            Assert.AreEqual("Bis", Target.getReservation(1).Bis);
+            Assert.AreEqual(Target.GetAuto(1), Target.GetReservation(1).Auto);
+            Assert.AreEqual("Von", Target.GetReservation(1).Von);
+            Assert.AreEqual("Bis", Target.GetReservation(1).Bis);
         }
 
         [TestMethod]
@@ -76,9 +76,9 @@ namespace AutoReservation.Service.Wcf.Testing
             auto.Marke="Bugatti";
             auto.Tagestarif=1000;
             auto.Id = 999;
-            Target.addAuto(auto);
+            Target.InsertAuto(auto);
 
-            AutoDto saved = Target.getAuto(999);
+            AutoDto saved = Target.GetAuto(999);
             Assert.AreEqual(999, saved.Id);
             Assert.AreEqual("Bugatti", saved.Marke);
             Assert.AreEqual(1000, saved.Tagestarif);
@@ -93,9 +93,9 @@ namespace AutoReservation.Service.Wcf.Testing
             kunde.Vorname = "Emre";
             kunde.Geburtsdatum = new DateTime(1992, 04, 10);
 
-            Target.addKunde(kunde);
+            Target.InsertKunde(kunde);
 
-            KundeDto saved = Target.getKunde(999);
+            KundeDto saved = Target.GetKunde(999);
             Assert.AreEqual(999, saved.Id);
             Assert.AreEqual("Emre", saved.Vorname);
             Assert.AreEqual("Avsar", saved.Nachname);
@@ -107,14 +107,14 @@ namespace AutoReservation.Service.Wcf.Testing
         {
             ReservationDto reservation = new ReservationDto();
             reservation.ReservationNr = 999;
-            reservation.Kunde = Target.getKunde(999);
-            reservation.Auto = Target.getAuto(999);
+            reservation.Kunde = Target.GetKunde(999);
+            reservation.Auto = Target.GetAuto(999);
             reservation.Von = new DateTime(2014, 01, 01);
             reservation.Bis = new DateTime(2015, 01, 01);
 
-            Target.addReservation(reservation);
+            Target.InsertReservation(reservation);
 
-            ReservationDto saved = Target.getReservation(999);
+            ReservationDto saved = Target.GetReservation(999);
             Assert.AreEqual(999, saved.ReservationNr);
             Assert.AreEqual(999, saved.Auto.Id);
             Assert.AreEqual(new DateTime(2014, 01, 01), saved.Von);
@@ -162,22 +162,22 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void DeleteKundeTest()
         {
-            Target.deleteKunde(Target.getKunde(999));
-            Assert.IsNull(Target.getKunde(999));
+            Target.DeleteKunde(Target.GetKunde(999));
+            Assert.IsNull(Target.GetKunde(999));
         }
 
         [TestMethod]
         public void DeleteAutoTest()
         {
-            Target.deleteAuto(Target.getAuto(999));
-            Assert.IsNull(Target.getAuto(999));
+            Target.DeleteAuto(Target.GetAuto(999));
+            Assert.IsNull(Target.GetAuto(999));
         }
 
         [TestMethod]
         public void DeleteReservationTest()
         {
-            Target.deleteReservation(Target.getReservation(999));
-            Assert.IsNull(Target.getReservation(999));
+            Target.DeleteReservation(Target.GetReservation(999));
+            Assert.IsNull(Target.GetReservation(999));
         }
     }
 }
