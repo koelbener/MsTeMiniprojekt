@@ -11,7 +11,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Marke" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="AutoKlasse" Type="int" Nullable="false" DefaultValue="0" />
+          <Property Name="AutoKlasse" Type="int" Nullable="false"  />
           <Property Name="Tagestarif" Type="int" Nullable="false" />
           <Property Name="Basistarif" Type="int" />
         </EntityType>
@@ -164,16 +164,10 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AutoReservationModelStoreContainer" CdmEntityContainer="AutoReservationEntities">
           <EntitySetMapping Name="Autos">
-            <EntityTypeMapping TypeName="IsTypeOf(AutoReservationModel.Auto)">
-              <MappingFragment StoreEntitySet="Auto">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Tagestarif" ColumnName="Tagestarif" />
-                <ScalarProperty Name="Marke" ColumnName="Marke" />
-                <Condition ColumnName="AutoKlasse" IsNull="1"/> <!-- TODO: is this correct? Added to fix compile error. Does Auto needs to be abstract?-->
-              </MappingFragment>
-            </EntityTypeMapping>
             <EntityTypeMapping TypeName="IsTypeOf(AutoReservationModel.LuxusklasseAuto)">
               <MappingFragment StoreEntitySet="Auto">
+                <ScalarProperty Name="Marke" ColumnName="Marke" />
+                <ScalarProperty Name="Tagestarif" ColumnName="Tagestarif" />
                 <ScalarProperty Name="Basistarif" ColumnName="Basistarif" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <Condition ColumnName="AutoKlasse" Value="0" />
@@ -181,14 +175,26 @@
             </EntityTypeMapping>
             <EntityTypeMapping TypeName="IsTypeOf(AutoReservationModel.MittelklasseAuto)">
               <MappingFragment StoreEntitySet="Auto">
+                <ScalarProperty Name="Marke" ColumnName="Marke" />
+                <ScalarProperty Name="Tagestarif" ColumnName="Tagestarif" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <Condition ColumnName="AutoKlasse" Value="1" />
               </MappingFragment>
             </EntityTypeMapping>
             <EntityTypeMapping TypeName="IsTypeOf(AutoReservationModel.StandardAuto)">
               <MappingFragment StoreEntitySet="Auto">
+                <ScalarProperty Name="Marke" ColumnName="Marke" />
+                <ScalarProperty Name="Tagestarif" ColumnName="Tagestarif" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <Condition ColumnName="AutoKlasse" Value="2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="AutoReservationModel.Auto">
+              <MappingFragment StoreEntitySet="Auto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Marke" ColumnName="Marke" />
+                <ScalarProperty Name="Tagestarif" ColumnName="Tagestarif" />
+                <Condition ColumnName="AutoKlasse" Value="4" /> <!-- hackish solution to fix Error 3001. How can we make Auto abstract?-->
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -9,77 +9,77 @@ namespace AutoReservation.Service.Wcf
     public class AutoReservationService : IAutoReservationService
     {
 
-        public IList<AutoDto> GetAllAutos()
+        public IList<AutoDto> Autos()
         {
             throw new NotImplementedException();
         }
 
-        public AutoDto getAuto(int id)
+        public AutoDto GetAuto(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void addAuto(AutoDto auto)
+        public void InsertAuto(AutoDto auto)
         {
             throw new NotImplementedException();
         }
 
-        public void updateAuto(AutoDto original, AutoDto modified)
+        public void UpdateAuto(AutoDto original, AutoDto modified)
         {
             throw new NotImplementedException();
         }
 
-        public void deleteAuto(AutoDto auto)
+        public void DeleteAuto(AutoDto auto)
         {
             throw new NotImplementedException();
         }
 
-        public IList<KundeDto> GetAllKunden()
+        public IList<KundeDto> Kunden()
         {
             throw new NotImplementedException();
         }
 
-        public KundeDto getKunde(int id)
+        public KundeDto GetKunde(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void addKunde(KundeDto kunde)
+        public void InsertKunde(KundeDto kunde)
         {
             throw new NotImplementedException();
         }
 
-        public void updateKunde(KundeDto original, KundeDto modified)
+        public void UpdateKunde(KundeDto original, KundeDto modified)
         {
             throw new NotImplementedException();
         }
 
-        public void deleteKunde(KundeDto kunde)
+        public void DeleteKunde(KundeDto kunde)
         {
             throw new NotImplementedException();
         }
 
-        public IList<ReservationDto> GetAllReservationen()
+        public IList<ReservationDto> Reservationen()
         {
             throw new NotImplementedException();
         }
 
-        public ReservationDto getReservation(int id)
+        public ReservationDto GetReservation(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void addReservation(ReservationDto reservation)
+        public void InsertReservation(ReservationDto reservation)
         {
             throw new NotImplementedException();
         }
 
-        public void updateReservation(ReservationDto original, ReservationDto modified)
+        public void UpdateReservation(ReservationDto original, ReservationDto modified)
         {
             throw new NotImplementedException();
         }
 
-        public void deleteReservation(ReservationDto auto)
+        public void DeleteReservation(ReservationDto auto)
         {
             throw new NotImplementedException();
         }

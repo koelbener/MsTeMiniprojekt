@@ -2,6 +2,7 @@
 using AutoReservation.TestEnvironment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data.Entity.Core.Objects;
 
 namespace AutoReservation.BusinessLayer.Testing
 {
@@ -37,8 +38,8 @@ namespace AutoReservation.BusinessLayer.Testing
         public void ReadAutoTest()
         {
             Assert.AreEqual("Fiat Punto", Target.getAuto(1).Marke);
-            Assert.AreEqual("50", Target.getAuto(1).Tagestarif);
-            Assert.IsTrue(Target.getAuto(1).GetType() == typeof(StandardAuto));
+            Assert.AreEqual(50, Target.getAuto(1).Tagestarif);
+            Assert.AreEqual(ObjectContext.GetObjectType(Target.getAuto(1).GetType()), typeof(AutoReservation.Dal.StandardAuto));
         }
 
         [TestMethod]
