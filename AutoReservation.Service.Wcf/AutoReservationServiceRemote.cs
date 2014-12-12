@@ -68,7 +68,7 @@ namespace AutoReservation.Service.Wcf
 
         public IList<ReservationDto> Reservationen()
         {
-            return businessComponent.getReservationen().ConvertToDtos();
+            return businessComponent.Reservationen().ConvertToDtos();
         }
 
         public ReservationDto GetReservation(int id)
