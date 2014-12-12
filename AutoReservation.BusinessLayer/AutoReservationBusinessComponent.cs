@@ -86,7 +86,7 @@ namespace AutoReservation.BusinessLayer
         /**
          *  Reservation
         */ 
-        public IList<Reservation> getReservationen()
+        public IList<Reservation> Reservationen()
         {
             return context.Reservationen.ToList();
         }
