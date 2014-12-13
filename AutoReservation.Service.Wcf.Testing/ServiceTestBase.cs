@@ -49,54 +49,50 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void GetKundeByIdTest()
         {
-            // TODO change Kundenvorname to correct name
-            Assert.AreEqual("Kundenvorname", Target.GetKunde(1).Nachname);
+            Assert.AreEqual("Nass", Target.GetKunde(1).Nachname);
         }
 
         [TestMethod]
         public void GetReservationByNrTest()
         {
-            // TODO fix correct auto id in getAuto()
-            Assert.AreEqual(Target.GetAuto(1), Target.GetReservation(1).Auto);
-            Assert.AreEqual("Von", Target.GetReservation(1).Von);
-            Assert.AreEqual("Bis", Target.GetReservation(1).Bis);
+            Assert.AreEqual(Target.GetAuto(1).ToString(), Target.GetReservation(1).Auto.ToString());
         }
 
         [TestMethod]
         public void GetReservationByIllegalNr()
         {
-            // TODO
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            Assert.IsNull(Target.GetReservation(9999));
         }
 
         [TestMethod]
         public void InsertAutoTest()
         {
+            int lastIdBeforeInsert = Target.Autos().Count;
+
             AutoDto auto = new AutoDto();
-            auto.Marke="Bugatti";
-            auto.Tagestarif=1000;
-            auto.Id = 999;
+            auto.Marke = "Bugatti";
+            auto.Tagestarif = 1000;
+            auto.Basistarif = 200;
+            auto.AutoKlasse = AutoKlasse.Luxusklasse;
             Target.InsertAuto(auto);
 
-            AutoDto saved = Target.GetAuto(999);
-            Assert.AreEqual(999, saved.Id);
+            AutoDto saved = Target.GetAuto(lastIdBeforeInsert+1);
             Assert.AreEqual("Bugatti", saved.Marke);
             Assert.AreEqual(1000, saved.Tagestarif);
+            Assert.AreEqual(AutoKlasse.Luxusklasse, saved.AutoKlasse);
         }
 
         [TestMethod]
         public void InsertKundeTest()
         {
+            int lastIdBeforeInsert = Target.Kunden().Count;
             KundeDto kunde = new KundeDto();
-            kunde.Id = 999;
             kunde.Nachname = "Avsar";
             kunde.Vorname = "Emre";
             kunde.Geburtsdatum = new DateTime(1992, 04, 10);
-
             Target.InsertKunde(kunde);
 
-            KundeDto saved = Target.GetKunde(999);
-            Assert.AreEqual(999, saved.Id);
+            KundeDto saved = Target.GetKunde(lastIdBeforeInsert + 1);
             Assert.AreEqual("Emre", saved.Vorname);
             Assert.AreEqual("Avsar", saved.Nachname);
             Assert.AreEqual(new DateTime(1992, 04, 10), saved.Geburtsdatum);
@@ -105,34 +101,51 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void InsertReservationTest()
         {
+            int lastKundenId = Target.Kunden().Count;
+            int lastAutoId = Target.Autos().Count;
+            int lastReservationId = Target.Reservationen().Count;
+
             ReservationDto reservation = new ReservationDto();
-            reservation.ReservationNr = 999;
-            reservation.Kunde = Target.GetKunde(999);
-            reservation.Auto = Target.GetAuto(999);
+            reservation.Kunde = Target.GetKunde(lastKundenId);
+            reservation.Auto = Target.GetAuto(lastAutoId);
             reservation.Von = new DateTime(2014, 01, 01);
             reservation.Bis = new DateTime(2015, 01, 01);
 
             Target.InsertReservation(reservation);
 
-            ReservationDto saved = Target.GetReservation(999);
-            Assert.AreEqual(999, saved.ReservationNr);
-            Assert.AreEqual(999, saved.Auto.Id);
+            ReservationDto saved = Target.GetReservation(lastReservationId + 1);
+            Assert.AreEqual(lastAutoId, saved.Auto.Id);
+            Assert.AreEqual(lastKundenId, saved.Kunde.Id);
             Assert.AreEqual(new DateTime(2014, 01, 01), saved.Von);
             Assert.AreEqual(new DateTime(2015, 01, 01), saved.Bis);
-
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
         }
 
         [TestMethod]
         public void UpdateAutoTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            AutoDto auto = Target.GetAuto(1);
+            auto.Marke = "BMW";
+            auto.Tagestarif = 10;
+
+            Target.UpdateAuto(Target.GetAuto(1), auto);
+            Assert.AreEqual("BMW", Target.GetAuto(1).Marke);
+            Assert.AreEqual(10, Target.GetAuto(1).Tagestarif);
         }
 
         [TestMethod]
         public void UpdateKundeTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            KundeDto kunde = Target.GetKunde(1);
+            DateTime now = DateTime.Now;
+            kunde.Geburtsdatum = now;
+            kunde.Nachname = "Moser";
+            kunde.Vorname = "Hansueli";
+            Target.UpdateKunde(Target.GetKunde(1), kunde);
+
+            KundeDto newLoaded = Target.GetKunde(1);
+            Assert.AreEqual("Moser", newLoaded.Nachname);
+            Assert.AreEqual("Hansueli", newLoaded.Vorname);
+            Assert.AreEqual(now, newLoaded.Geburtsdatum);
         }
 
         [TestMethod]
@@ -160,24 +173,27 @@ namespace AutoReservation.Service.Wcf.Testing
         }
 
         [TestMethod]
+        public void DeleteReservationTest()
+        {
+            int lastId = Target.Reservationen().Count;
+            Target.DeleteReservation(Target.GetReservation(lastId));
+            Assert.IsNull(Target.GetReservation(lastId));
+        }
+
+        [TestMethod]
         public void DeleteKundeTest()
         {
-            Target.DeleteKunde(Target.GetKunde(999));
-            Assert.IsNull(Target.GetKunde(999));
+            int lastId = Target.Kunden().Count;
+            Target.DeleteKunde(Target.GetKunde(lastId));
+            Assert.IsNull(Target.GetKunde(lastId));
         }
 
         [TestMethod]
         public void DeleteAutoTest()
         {
-            Target.DeleteAuto(Target.GetAuto(999));
-            Assert.IsNull(Target.GetAuto(999));
-        }
-
-        [TestMethod]
-        public void DeleteReservationTest()
-        {
-            Target.DeleteReservation(Target.GetReservation(999));
-            Assert.IsNull(Target.GetReservation(999));
+            int lastId = Target.Autos().Count;
+            Target.DeleteAuto(Target.GetAuto(lastId));
+            Assert.IsNull(Target.GetAuto(lastId));
         }
     }
 }
