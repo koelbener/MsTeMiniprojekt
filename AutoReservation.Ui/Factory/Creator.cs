@@ -18,6 +18,5 @@ namespace AutoReservation.Ui.Factory
         }
 
         public abstract IAutoReservationService CreateInstance();
-
     }
 }

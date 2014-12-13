@@ -18,7 +18,7 @@ namespace AutoReservation.Common.DataTransferObjects
             get { return id; }
             set
             {
-                if (!id.Equals(value))
+                if (id == null || !id.Equals(value))
                 {
                     this.id = value;
                     RaisePropertyChanged();
@@ -32,7 +32,7 @@ namespace AutoReservation.Common.DataTransferObjects
             get { return nachname; }
             set
             {
-                if (!nachname.Equals(value))
+                if (nachname == null || !nachname.Equals(value))
                 {
                     this.nachname = value;
                     RaisePropertyChanged();
@@ -46,7 +46,7 @@ namespace AutoReservation.Common.DataTransferObjects
             get { return vorname; }
             set
             {
-                if (!vorname.Equals(value))
+                if (vorname == null || !vorname.Equals(value))
                 {
                     this.vorname = value;
                     RaisePropertyChanged();
@@ -60,7 +60,7 @@ namespace AutoReservation.Common.DataTransferObjects
             get { return geburtsdatum; }
             set
             {
-                if (!geburtsdatum.Equals(geburtsdatum))
+                if (geburtsdatum == null || !geburtsdatum.Equals(geburtsdatum))
                 {
                     this.geburtsdatum = value;
                     RaisePropertyChanged();

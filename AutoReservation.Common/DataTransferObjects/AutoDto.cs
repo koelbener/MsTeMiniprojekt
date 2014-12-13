@@ -20,7 +20,7 @@ namespace AutoReservation.Common.DataTransferObjects
             get { return klasse; }
             set
             {
-                if (!klasse.Equals(value))
+                if (klasse == null || !klasse.Equals(value))
                 {
                     klasse = value;
                     RaisePropertyChanged();
@@ -35,7 +35,7 @@ namespace AutoReservation.Common.DataTransferObjects
             get { return basistarif; }
             set
             {
-                if (!basistarif.Equals(value))
+                if (basistarif == null || !basistarif.Equals(value))
                 {
                     basistarif = value;
                     RaisePropertyChanged();
@@ -49,7 +49,7 @@ namespace AutoReservation.Common.DataTransferObjects
             get { return marke; }
             set
             {
-                if (!marke.Equals(value))
+                if (marke == null || !marke.Equals(value))
                 {
                     this.marke = value;
                     RaisePropertyChanged();
@@ -64,7 +64,7 @@ namespace AutoReservation.Common.DataTransferObjects
             get { return id; }
             set
             {
-                if (!id.Equals(value))
+                if (id == null || !id.Equals(value))
                 {
                     id = value;
                     RaisePropertyChanged();
@@ -78,7 +78,7 @@ namespace AutoReservation.Common.DataTransferObjects
             get { return tagestarif; }
             set
             {
-                if (!tagestarif.Equals(value))
+                if (tagestarif == null || !tagestarif.Equals(value))
                 {
                     tagestarif = value;
                     RaisePropertyChanged();

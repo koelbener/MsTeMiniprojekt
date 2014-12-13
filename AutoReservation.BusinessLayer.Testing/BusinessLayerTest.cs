@@ -52,7 +52,6 @@ namespace AutoReservation.BusinessLayer.Testing
         [TestMethod]
         public void UpdateKundeTest()
         {
-            /*
             Kunde kunde = Target.getKunde(1);
             DateTime now = DateTime.Now;
             kunde.Geburtsdatum = now;
@@ -60,11 +59,10 @@ namespace AutoReservation.BusinessLayer.Testing
             kunde.Vorname = "Hansueli";
             Target.updateKunde(Target.getKunde(1), kunde);
 
-            newLoaded = Target.getKunde(1)
-            Assert.AreEqual("Moser", kunde.Nachname);
-            Assert.AreEqual("Hansueli", kunde.Vorname);
-            Assert.AreEqual(now, kunde.Geburtsdatum);
-            */
+            Kunde newLoaded = Target.getKunde(1);
+            Assert.AreEqual("Moser", newLoaded.Nachname);
+            Assert.AreEqual("Hansueli", newLoaded.Vorname);
+            Assert.AreEqual(now, newLoaded.Geburtsdatum);
         }
 
         public void UpdateAutoTestWithNewRelation()
@@ -113,8 +111,8 @@ namespace AutoReservation.BusinessLayer.Testing
 
             Assert.IsFalse(oldOwner.Reservations.Contains(reservation));
             Assert.IsTrue(newOwner.Reservations.Contains(reservation));
-            Assert.AreEqual(reservation.Kunde, newOwner);
-            Assert.AreEqual(reservation.KundeId, newOwner.Id);
+            Assert.AreEqual(Target.getReservation(1).Kunde, newOwner);
+            Assert.AreEqual(Target.getReservation(1).KundeId, newOwner.Id);
         }
 
         private Kunde createKunde()
