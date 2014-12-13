@@ -9,7 +9,7 @@ namespace AutoReservation.Ui.Factory
 {
     class RemoteDataAccessCreator : Creator
     {
-        public IAutoReservationService CreateInstance()
+        public override IAutoReservationService CreateInstance()
         {
             
             // TODO

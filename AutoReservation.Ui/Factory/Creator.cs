@@ -1,4 +1,5 @@
-﻿using AutoReservation.Ui.Properties;
+﻿using AutoReservation.Common.Interfaces;
+using AutoReservation.Ui.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,14 @@ namespace AutoReservation.Ui.Factory
 {
     abstract class Creator
     {
-        public Creator GetCreator()
+        public static Creator GetCreator()
         {
             Type serviceLayerType = Type.GetType(Settings.Default.ServiceLayerType);
             if (serviceLayerType == null) { return new LocalDataAccessCreator(); }
             return (Creator)Activator.CreateInstance(serviceLayerType);
         }
+
+        public abstract IAutoReservationService CreateInstance();
+
     }
 }

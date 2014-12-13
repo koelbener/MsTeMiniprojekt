@@ -10,7 +10,7 @@ namespace AutoReservation.Ui.Factory
 {
     class LocalDataAccessCreator : Creator
     {
-        public IAutoReservationService CreateInstance()
+        public override IAutoReservationService CreateInstance()
         {
             return new AutoReservationServiceRemote();
         }
