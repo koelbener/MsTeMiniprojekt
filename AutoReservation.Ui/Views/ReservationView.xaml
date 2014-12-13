@@ -41,18 +41,22 @@
             </Grid.RowDefinitions>
             <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" 
                    FontSize="16" FontWeight="UltraBold" FontStyle="Italic">
-                Auto-Liste
+                Reservationen-Liste
             </Label>
             <DataGrid Grid.Row="1"
                       Name="dgAutos" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="False"
                       SelectionMode="Single" IsReadOnly="True"
-                      ItemsSource="{Binding Autos}" 
-                      SelectedItem="{Binding SelectedAuto, Mode=TwoWay}">
+                      ItemsSource="{Binding Reservationen}" 
+                      SelectedItem="{Binding SelectedReservation, Mode=TwoWay}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Marke" Binding="{Binding Marke}" />
-                    <DataGridTextColumn Header="Auto Klasse" Binding="{Binding AutoKlasse}" />
-                    <DataGridTextColumn Header="Tagestarif" Binding="{Binding Tagestarif}" />
-                    <DataGridTextColumn Header="Basistarif" Binding="{Binding Basistarif}" />
+                    <DataGridTextColumn Header="Von" Binding="{Binding Von, StringFormat=\{0:dd.MM.yyyy\}, Mode=TwoWay}" />
+                    <DataGridTextColumn Header="Bis" Binding="{Binding Bis, StringFormat=\{0:dd.MM.yyyy\}, Mode=TwoWay}" />
+                    <DataGridTextColumn Header="Kunde (Vorname)" Binding="{Binding Kunde.Vorname}" />
+                    <DataGridTextColumn Header="Kunde (Nachname)" Binding="{Binding Kunde.Nachname}" />
+                    <DataGridTextColumn Header="Marke" Binding="{Binding Auto.Marke}" />
+                    <DataGridTextColumn Header="Auto Klasse" Binding="{Binding Auto.AutoKlasse}" />
+                    <DataGridTextColumn Header="Tagestarif" Binding="{Binding Auto.Tagestarif}" />
+                    <DataGridTextColumn Header="Basistarif" Binding="{Binding Auto.Basistarif}" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -88,21 +92,24 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="1">Typ</Label>
-            <Label Grid.Row="2">Marke</Label>
-            <Label Grid.Row="3">Tagestarif</Label>
-            <Label Grid.Row="4">Basistarif</Label>
+            <Label Grid.Row="1">Auto</Label>
+            <Label Grid.Row="2">Kunde</Label>
+            <Label Grid.Row="3">Von</Label>
+            <Label Grid.Row="4">Bis</Label>
 
             <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" 
                    FontSize="16" FontWeight="UltraBold" FontStyle="Italic">
-                Auto Editieren
+                Reservation Editieren
             </Label>
             <ComboBox Grid.Column="1" Grid.Row="1" 
                       ItemsSource="{Binding Source={StaticResource AutoKlassen}}"
-                      SelectedIndex="{Binding SelectedAuto.AutoKlasse, Converter={StaticResource AutoKlasseEnumConverter}}"  />
-            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding SelectedAuto.Marke}" />
-            <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding SelectedAuto.Tagestarif}" />
-            <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding SelectedAuto.Basistarif}" Visibility="{Binding SelectedAuto.AutoKlasse, Converter={StaticResource BasistarifVisibilityConverter}, Mode=TwoWay}" />
+                      SelectedIndex="{Binding SelectedReservation.Auto}"  /> <!-- TODO AutoKlassen => Change to Auto -->
+            <ComboBox Grid.Column="1" Grid.Row="1" 
+                      ItemsSource="{Binding Source={StaticResource AutoKlassen}}"
+                      SelectedIndex="{Binding SelectedReservation.Kunde}" /> <!-- TODO AutoKlassen => Change to Kunde -->
+            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding SelectedReservation.Kunde }" />
+            <DatePicker Grid.Column="1" Grid.Row="3" SelectedDate="{Binding SelectedReservation.Von}" DisplayDateEnd="12/31/2020" DisplayDateStart="1/1/1900" />
+            <DatePicker Grid.Column="1" Grid.Row="4" SelectedDate="{Binding SelectedReservation.Bis}" DisplayDateEnd="12/31/2020" DisplayDateStart="1/1/1900" />
         </Grid>
     </Grid>
 </UserControl>

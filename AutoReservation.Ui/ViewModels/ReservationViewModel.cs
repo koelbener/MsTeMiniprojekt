@@ -9,29 +9,30 @@ namespace AutoReservation.Ui.ViewModels
 {
     public class ReservationViewModel : ViewModelBase
     {
-        private readonly List<AutoDto> autosOriginal = new List<AutoDto>();
-        private ObservableCollection<AutoDto> autos;
-        public ObservableCollection<AutoDto> Autos
+        private readonly List<ReservationDto> reservationenOriginal = new List<ReservationDto>();
+        private ObservableCollection<ReservationDto> reservationen;
+
+        public ObservableCollection<ReservationDto> Reservationen
         {
             get
             {
-                if (autos == null)
+                if (reservationen == null)
                 {
-                    autos = new ObservableCollection<AutoDto>();
+                    reservationen = new ObservableCollection<ReservationDto>();
                 }
-                return autos;
+                return reservationen;
             }
         }
 
-        private AutoDto selectedAuto;
-        public AutoDto SelectedAuto
+        private ReservationDto selectedReservation;
+        public ReservationDto SelectedReservation
         {
-            get { return selectedAuto; }
+            get { return selectedReservation; }
             set
             {
-                if (selectedAuto != value)
+                if (selectedReservation != value)
                 {
-                    selectedAuto = value;
+                    selectedReservation = value;
                     RaisePropertyChanged();
                 }
             }
@@ -58,14 +59,14 @@ namespace AutoReservation.Ui.ViewModels
 
         protected override void Load()
         {
-            Autos.Clear();
-            autosOriginal.Clear();
-            foreach (AutoDto auto in Service.Autos())
+            Reservationen.Clear();
+            reservationenOriginal.Clear();
+            foreach (ReservationDto reservation in Service.Reservationen())
             {
-                Autos.Add(auto);
-                autosOriginal.Add((AutoDto)auto.Clone());
+                Reservationen.Add(reservation);
+                reservationenOriginal.Add((ReservationDto)reservation.Clone());
             }
-            SelectedAuto = Autos.FirstOrDefault();
+            selectedReservation = Reservationen.FirstOrDefault();
         }
 
         private bool CanLoad()
@@ -96,16 +97,16 @@ namespace AutoReservation.Ui.ViewModels
 
         private void SaveData()
         {
-            foreach (AutoDto auto in Autos)
+            foreach (ReservationDto res in Reservationen)
             {
-                if (auto.Id == default(int))
+                if (res.ReservationNr == default(int))
                 {
-                    Service.InsertAuto(auto);
+                    Service.InsertReservation(res);
                 }
                 else
                 {
-                    AutoDto original = autosOriginal.FirstOrDefault(ao => ao.Id == auto.Id);
-                    Service.UpdateAuto(auto, original);
+                    ReservationDto original = reservationenOriginal.FirstOrDefault(ao => ao.ReservationNr == res.ReservationNr);
+                    Service.UpdateReservation(res, original);
                 }
             }
             Load();
@@ -119,12 +120,12 @@ namespace AutoReservation.Ui.ViewModels
             }
 
             StringBuilder errorText = new StringBuilder();
-            foreach (AutoDto auto in Autos)
+            foreach (ReservationDto res in Reservationen)
             {
-                string error = auto.Validate();
+                string error = res.Validate();
                 if (!string.IsNullOrEmpty(error))
                 {
-                    errorText.AppendLine(auto.ToString());
+                    errorText.AppendLine(res.ToString());
                     errorText.AppendLine(error);
                 }
             }
@@ -156,7 +157,7 @@ namespace AutoReservation.Ui.ViewModels
 
         private void New()
         {
-            Autos.Add(new AutoDto());
+            Reservationen.Add(new ReservationDto());
         }
 
         private bool CanNew()
@@ -187,15 +188,15 @@ namespace AutoReservation.Ui.ViewModels
 
         private void Delete()
         {
-            Service.DeleteAuto(SelectedAuto);
+            Service.DeleteReservation(selectedReservation);
             Load();
         }
 
         private bool CanDelete()
         {
             return
-                SelectedAuto != null &&
-                SelectedAuto.Id != default(int) &&
+                selectedReservation != null &&
+                selectedReservation.ReservationNr != default(int) &&
                 Service != null;
         }
 
