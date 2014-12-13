@@ -72,6 +72,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\ReservationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\AutoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,7 +108,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\DetailViewVisibilityConverter.cs" />
+    <Compile Include="ViewModels\ReservationViewModel.cs" />
     <Compile Include="ViewModels\KundeViewModel.cs" />
+    <Compile Include="Views\ReservationView.xaml.cs">
+      <DependentUpon>ReservationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AutoView.xaml.cs">
       <DependentUpon>AutoView.xaml</DependentUpon>
     </Compile>
