@@ -121,6 +121,9 @@ namespace AutoReservation.Common.DataTransferObjects
 
         public override string ToString()
         {
+            return marke + " (" + AutoKlasse + ")";
+            /*
+             * ask emre
             return string.Format(
                 "{0}; {1}; {2}; {3}; {4}",
                 Id,
@@ -128,6 +131,7 @@ namespace AutoReservation.Common.DataTransferObjects
                 Tagestarif,
                 Basistarif,
                 AutoKlasse);
+             */
         }
 
     }

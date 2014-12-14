@@ -103,12 +103,18 @@ namespace AutoReservation.Common.DataTransferObjects
 
         public override string ToString()
         {
+            return vorname + " " + nachname;
+            
+            /*
+             * Emre: In the UI we use the KundeDto for Dropdowns, if these linese of code are not
+             * really used, we can just change the ToString() method to show only pre and last name
             return string.Format(
                 "{0}; {1}; {2}; {3}",
                 id,
                 nachname,
                 vorname,
                 geburtsdatum);
+             */
         }
 
     }

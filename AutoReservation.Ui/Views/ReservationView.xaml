@@ -101,13 +101,20 @@
                    FontSize="16" FontWeight="UltraBold" FontStyle="Italic">
                 Reservation Editieren
             </Label>
+            
             <ComboBox Grid.Column="1" Grid.Row="1" 
-                      ItemsSource="{Binding Source={StaticResource AutoKlassen}}"
-                      SelectedIndex="{Binding SelectedReservation.Auto}"  /> <!-- TODO AutoKlassen => Change to Auto -->
-            <ComboBox Grid.Column="1" Grid.Row="1" 
-                      ItemsSource="{Binding Source={StaticResource AutoKlassen}}"
-                      SelectedIndex="{Binding SelectedReservation.Kunde}" /> <!-- TODO AutoKlassen => Change to Kunde -->
-            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding SelectedReservation.Kunde }" />
+                      ItemsSource="{Binding Autos }"
+                      SelectedIndex="{Binding SelectedReservation.Auto}"
+                      SelectedItem="{Binding SelectedReservation.Auto}"
+                      IsSynchronizedWithCurrentItem="True"
+                      />
+
+            <ComboBox Grid.Column="1" Grid.Row="2" 
+                      ItemsSource="{Binding Kunden }"
+                      SelectedItem="{Binding SelectedReservation.Kunde}"
+                      IsSynchronizedWithCurrentItem="True"
+                      />
+            
             <DatePicker Grid.Column="1" Grid.Row="3" SelectedDate="{Binding SelectedReservation.Von}" DisplayDateEnd="12/31/2020" DisplayDateStart="1/1/1900" />
             <DatePicker Grid.Column="1" Grid.Row="4" SelectedDate="{Binding SelectedReservation.Bis}" DisplayDateEnd="12/31/2020" DisplayDateStart="1/1/1900" />
         </Grid>
