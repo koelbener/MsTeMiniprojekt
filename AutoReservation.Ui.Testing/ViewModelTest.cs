@@ -18,6 +18,7 @@ namespace AutoReservation.Ui.Testing
         public void AutosLoadTest()
         {
             AutoViewModel avm = new AutoViewModel();
+            Assert.IsTrue(avm.LoadCommand.CanExecute(avm));
             Assert.IsTrue(avm.Autos.Count > 0);
         }
 
@@ -25,6 +26,7 @@ namespace AutoReservation.Ui.Testing
         public void KundenLoadTest()
         {
             KundeViewModel kvm = new KundeViewModel();
+            Assert.IsTrue(kvm.LoadCommand.CanExecute(kvm));
             Assert.IsTrue(kvm.Kunden.Count > 0);
         }
 
@@ -32,6 +34,7 @@ namespace AutoReservation.Ui.Testing
         public void ReservationenLoadTest()
         {
             ReservationViewModel rvm = new ReservationViewModel();
+            Assert.IsTrue(rvm.LoadCommand.CanExecute(rvm));
             Assert.IsTrue(rvm.Reservationen.Count > 0);
         }
     }
