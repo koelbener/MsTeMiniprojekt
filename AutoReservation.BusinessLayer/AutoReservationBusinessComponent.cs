@@ -18,12 +18,12 @@ namespace AutoReservation.BusinessLayer
 
         public IList<Auto> getAutos()
         {
-            return context.Autos.ToList();
+            return context.Autos.AsNoTracking().ToList();
         }
 
         public Auto getAuto(int id)
         {
-            return context.Autos.SingleOrDefault(a => a.Id == id);
+            return context.Autos.AsNoTracking().SingleOrDefault(a => a.Id == id);
         }
 
         // TODO: Exception handling for all update methods
@@ -54,12 +54,12 @@ namespace AutoReservation.BusinessLayer
 
         public IList<Kunde> getKunden()
         {
-            return context.Kunden.ToList();
+            return context.Kunden.AsNoTracking().ToList();
         }
 
         public Kunde getKunde(int id)
         {
-            return context.Kunden.SingleOrDefault(k => k.Id == id);
+            return context.Kunden.AsNoTracking().SingleOrDefault(k => k.Id == id);
         }        
 
         public void deleteKunde(Kunde kunde)
@@ -88,12 +88,12 @@ namespace AutoReservation.BusinessLayer
         */ 
         public IList<Reservation> Reservationen()
         {
-            return context.Reservationen.ToList();
+            return context.Reservationen.AsNoTracking().ToList();
         }
 
         public Reservation getReservation(int reservationNr)
         {
-            return context.Reservationen.SingleOrDefault(r => r.ReservationNr == reservationNr);
+            return context.Reservationen.AsNoTracking().SingleOrDefault(r => r.ReservationNr == reservationNr);
         }        
 
         public void deleteReservation(Reservation reservation)
