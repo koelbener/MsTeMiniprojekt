@@ -104,7 +104,6 @@
             
             <ComboBox Grid.Column="1" Grid.Row="1" 
                       ItemsSource="{Binding Autos }"
-                      SelectedIndex="{Binding SelectedReservation.Auto}"
                       SelectedItem="{Binding SelectedReservation.Auto}"
                       IsSynchronizedWithCurrentItem="True"
                       />
