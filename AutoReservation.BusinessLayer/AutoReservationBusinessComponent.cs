@@ -38,6 +38,7 @@ namespace AutoReservation.BusinessLayer
             {
                 HandleDbConcurrencyException(context, original);
             }
+            context.Entry(original).State = EntityState.Detached;
         }
 
         public void DeleteAuto(Auto auto)
@@ -49,7 +50,9 @@ namespace AutoReservation.BusinessLayer
         public void AddAuto(Auto auto)
         {
             context.Autos.Add(auto);
-            context.SaveChanges(); // TODO: SaveChanges always needed?
+            context.SaveChanges();
+
+            context.Entry(auto).State = EntityState.Detached;
         }
 
 
@@ -72,6 +75,7 @@ namespace AutoReservation.BusinessLayer
             context.Kunden.Attach(kunde);
             context.Kunden.Remove(kunde);
             context.SaveChanges();
+            context.Entry(kunde).State = EntityState.Detached;
         }
 
         public void UpdateKunde(Kunde original, Kunde modified)
@@ -86,12 +90,15 @@ namespace AutoReservation.BusinessLayer
             {
                 HandleDbConcurrencyException(context, original);
             }
+            context.Entry(original).State = EntityState.Detached;
         }
 
         public void AddKunde(Kunde kunde)
         {
             context.Kunden.Add(kunde);
-            context.SaveChanges(); 
+            context.SaveChanges();
+
+            context.Entry(kunde).State = EntityState.Detached;
         }
 
 
@@ -113,6 +120,7 @@ namespace AutoReservation.BusinessLayer
             context.Reservationen.Attach(reservation);
             context.Reservationen.Remove(reservation);
             context.SaveChanges();
+            context.Entry(reservation).State = EntityState.Detached;
         }
         public void UpdateReservation(Reservation original, Reservation modified)
         {
@@ -126,12 +134,14 @@ namespace AutoReservation.BusinessLayer
             {
                 HandleDbConcurrencyException(context, original);
             }
+            context.Entry(original).State = EntityState.Detached;
         }
 
         public void AddReservation(Reservation reservation)
         {
             context.Reservationen.Add(reservation);
             context.SaveChanges();
+            context.Entry(reservation).State = EntityState.Detached;
         }
 
 
