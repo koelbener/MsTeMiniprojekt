@@ -26,19 +26,24 @@ namespace AutoReservation.BusinessLayer
             return context.Autos.AsNoTracking().SingleOrDefault(a => a.Id == id);
         }
 
-        // TODO: Exception handling for all update methods
         public void updateAuto(Auto original, Auto modified)
         {
             context.Autos.Attach(original);
             context.Entry(original).CurrentValues.SetValues(modified);
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                HandleDbConcurrencyException(context, original);
+            }
         }
 
         public void deleteAuto(Auto auto)
         {
             context.Autos.Attach(auto);
             context.Autos.Remove(auto);
-            context.SaveChanges();
         }
 
         public void addAuto(Auto auto)
@@ -73,7 +78,14 @@ namespace AutoReservation.BusinessLayer
         {
             context.Kunden.Attach(original);
             context.Entry(original).CurrentValues.SetValues(modified);
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                HandleDbConcurrencyException(context, original);
+            }
         }
 
         public void addKunde(Kunde kunde)
@@ -106,7 +118,14 @@ namespace AutoReservation.BusinessLayer
         {
             context.Reservationen.Attach(original);
             context.Entry(original).CurrentValues.SetValues(modified);
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                HandleDbConcurrencyException(context, original);
+            }
         }
 
         public void addReservation(Reservation reservation)
