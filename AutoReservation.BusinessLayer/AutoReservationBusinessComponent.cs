@@ -45,6 +45,8 @@ namespace AutoReservation.BusinessLayer
         {
             context.Autos.Attach(auto);
             context.Autos.Remove(auto);
+            context.SaveChanges();
+            context.Entry(auto).State = EntityState.Detached;
         }
 
         public void AddAuto(Auto auto)

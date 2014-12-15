@@ -167,25 +167,22 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void DeleteReservationTest()
         {
-            int lastId = Target.Reservationen().Count;
-            Target.DeleteReservation(Target.GetReservation(lastId));
-            Assert.IsNull(Target.GetReservation(lastId));
+            Target.DeleteReservation(Target.GetReservation(1));
+            Assert.IsNull(Target.GetReservation(1));
         }
 
         [TestMethod]
         public void DeleteKundeTest()
         {
-            int lastId = Target.Kunden().Count;
-            Target.DeleteKunde(Target.GetKunde(lastId));
-            Assert.IsNull(Target.GetKunde(lastId));
+            Target.DeleteKunde(Target.GetKunde(1));
+            Assert.IsNull(Target.GetKunde(1));
         }
 
         [TestMethod]
         public void DeleteAutoTest()
         {
-            int lastId = Target.Autos().Count;
-            Target.DeleteAuto(Target.GetAuto(lastId));
-            Assert.IsNull(Target.GetAuto(lastId));
+            Target.DeleteAuto(Target.GetAuto(1));
+            Assert.IsNull(Target.GetAuto(1));
         }
     }
 }
