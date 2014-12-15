@@ -185,3 +185,6 @@ UpgradeLog*.htm
 FakesAssemblies/
 AutoReservation.v12.suo
 *.cache
+AutoReservation.BusinessLayer/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+AutoReservation.Common/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+AutoReservation.Dal/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
