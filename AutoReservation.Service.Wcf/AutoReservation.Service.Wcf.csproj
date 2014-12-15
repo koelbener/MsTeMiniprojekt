@@ -58,7 +58,7 @@
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoReservationServiceRemote.cs" />
+    <Compile Include="AutoReservationService.cs" />
     <Compile Include="DtoConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

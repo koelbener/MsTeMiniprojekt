@@ -11,10 +11,7 @@ namespace AutoReservation.Ui.Factory
     {
         public override IAutoReservationService CreateInstance()
         {
-            BasicHttpBinding myBinding = new BasicHttpBinding();
-            EndpointAddress myEndpoint = new EndpointAddress("net.tcp://localhost:7876/AutoReservationService");
-
-            ChannelFactory<IAutoReservationService> myChannelFactory = new ChannelFactory<IAutoReservationService>(myBinding, myEndpoint);
+            ChannelFactory<IAutoReservationService> myChannelFactory = new ChannelFactory<IAutoReservationService>("AutoReservationService");
 
             // Create a channel.
             return myChannelFactory.CreateChannel();
