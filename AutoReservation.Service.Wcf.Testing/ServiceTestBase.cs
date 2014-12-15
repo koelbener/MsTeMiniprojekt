@@ -159,7 +159,6 @@ namespace AutoReservation.Service.Wcf.Testing
             Target.UpdateReservation(Target.GetReservation(1), reservation);
 
             CompareDates(newDate, Target.GetReservation(1).Von);
-            Assert.IsTrue(newDate.AddHours(1).CompareTo(Target.GetReservation(1).Bis) == 1);
             CompareDates(newDate.AddHours(1), Target.GetReservation(1).Bis);
             CompareDates(newDate, Target.GetReservation(1).Von);
             CompareDates(newDate.AddHours(1), Target.GetReservation(1).Bis);
