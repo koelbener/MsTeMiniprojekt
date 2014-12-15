@@ -26,55 +26,55 @@ namespace AutoReservation.Service.Wcf
         public IList<AutoDto> Autos()
         {
             WriteActualMethod();
-            return businessComponent.getAutos().ConvertToDtos();
+            return businessComponent.GetAutos().ConvertToDtos();
         }
 
         public AutoDto GetAuto(int id)
         {
             WriteActualMethod();
-            return businessComponent.getAuto(id).ConvertToDto();
+            return businessComponent.GetAuto(id).ConvertToDto();
         }
 
         public void InsertAuto(AutoDto auto)
         {
             WriteActualMethod();
-            businessComponent.addAuto(auto.ConvertToEntity());
+            businessComponent.AddAuto(auto.ConvertToEntity());
         }
 
         public void UpdateAuto(AutoDto original, AutoDto modified)
         {
             WriteActualMethod();
-            businessComponent.updateAuto(original.ConvertToEntity(), modified.ConvertToEntity());
+            businessComponent.UpdateAuto(original.ConvertToEntity(), modified.ConvertToEntity());
         }
 
         public void DeleteAuto(AutoDto auto)
         {
             WriteActualMethod();
-            businessComponent.deleteAuto(auto.ConvertToEntity());
+            businessComponent.DeleteAuto(auto.ConvertToEntity());
         }
 
         public IList<KundeDto> Kunden()
         {
             WriteActualMethod();
-            return businessComponent.getKunden().ConvertToDtos();
+            return businessComponent.GetKunden().ConvertToDtos();
         }
 
         public KundeDto GetKunde(int id)
         {
             WriteActualMethod();
-            return businessComponent.getKunde(id).ConvertToDto();
+            return businessComponent.GetKunde(id).ConvertToDto();
         }
 
         public void InsertKunde(KundeDto kunde)
         {
             WriteActualMethod();
-            businessComponent.addKunde(kunde.ConvertToEntity());
+            businessComponent.AddKunde(kunde.ConvertToEntity());
         }
 
         public void UpdateKunde(KundeDto original, KundeDto modified)
         {
             WriteActualMethod();
-            businessComponent.updateKunde(original.ConvertToEntity(), modified.ConvertToEntity());
+            businessComponent.UpdateKunde(original.ConvertToEntity(), modified.ConvertToEntity());
         }
 
         public void DeleteKunde(KundeDto kunde)
@@ -92,25 +92,25 @@ namespace AutoReservation.Service.Wcf
         public ReservationDto GetReservation(int id)
         {
             WriteActualMethod();
-            return businessComponent.getReservation(id).ConvertToDto();
+            return businessComponent.GetReservation(id).ConvertToDto();
         }
 
         public void InsertReservation(ReservationDto reservation)
         {
             WriteActualMethod();
-            businessComponent.addReservation(reservation.ConvertToEntity());
+            businessComponent.AddReservation(reservation.ConvertToEntity());
         }
 
         public void UpdateReservation(ReservationDto original, ReservationDto modified)
         {
             WriteActualMethod();
-            businessComponent.updateReservation(original.ConvertToEntity(), modified.ConvertToEntity());
+            businessComponent.UpdateReservation(original.ConvertToEntity(), modified.ConvertToEntity());
         }
 
         public void DeleteReservation(ReservationDto auto)
         {
             WriteActualMethod();
-            businessComponent.deleteReservation(auto.ConvertToEntity());
+            businessComponent.DeleteReservation(auto.ConvertToEntity());
         }
     }
 }

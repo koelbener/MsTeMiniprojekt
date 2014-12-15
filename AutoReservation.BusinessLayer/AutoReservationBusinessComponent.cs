@@ -16,17 +16,17 @@ namespace AutoReservation.BusinessLayer
             context = new AutoReservationEntities();
         }
 
-        public IList<Auto> getAutos()
+        public IList<Auto> GetAutos()
         {
             return context.Autos.AsNoTracking().ToList();
         }
 
-        public Auto getAuto(int id)
+        public Auto GetAuto(int id)
         {
             return context.Autos.AsNoTracking().SingleOrDefault(a => a.Id == id);
         }
 
-        public void updateAuto(Auto original, Auto modified)
+        public void UpdateAuto(Auto original, Auto modified)
         {
             context.Autos.Attach(original);
             context.Entry(original).CurrentValues.SetValues(modified);
@@ -40,13 +40,13 @@ namespace AutoReservation.BusinessLayer
             }
         }
 
-        public void deleteAuto(Auto auto)
+        public void DeleteAuto(Auto auto)
         {
             context.Autos.Attach(auto);
             context.Autos.Remove(auto);
         }
 
-        public void addAuto(Auto auto)
+        public void AddAuto(Auto auto)
         {
             context.Autos.Add(auto);
             context.SaveChanges(); // TODO: SaveChanges always needed?
@@ -57,12 +57,12 @@ namespace AutoReservation.BusinessLayer
          * Kunden
         */
 
-        public IList<Kunde> getKunden()
+        public IList<Kunde> GetKunden()
         {
             return context.Kunden.AsNoTracking().ToList();
         }
 
-        public Kunde getKunde(int id)
+        public Kunde GetKunde(int id)
         {
             return context.Kunden.AsNoTracking().SingleOrDefault(k => k.Id == id);
         }        
@@ -74,7 +74,7 @@ namespace AutoReservation.BusinessLayer
             context.SaveChanges();
         }
 
-        public void updateKunde(Kunde original, Kunde modified)
+        public void UpdateKunde(Kunde original, Kunde modified)
         {
             context.Kunden.Attach(original);
             context.Entry(original).CurrentValues.SetValues(modified);
@@ -88,7 +88,7 @@ namespace AutoReservation.BusinessLayer
             }
         }
 
-        public void addKunde(Kunde kunde)
+        public void AddKunde(Kunde kunde)
         {
             context.Kunden.Add(kunde);
             context.SaveChanges(); 
@@ -103,18 +103,18 @@ namespace AutoReservation.BusinessLayer
             return context.Reservationen.AsNoTracking().ToList();
         }
 
-        public Reservation getReservation(int reservationNr)
+        public Reservation GetReservation(int reservationNr)
         {
             return context.Reservationen.AsNoTracking().SingleOrDefault(r => r.ReservationNr == reservationNr);
         }        
 
-        public void deleteReservation(Reservation reservation)
+        public void DeleteReservation(Reservation reservation)
         {
             context.Reservationen.Attach(reservation);
             context.Reservationen.Remove(reservation);
             context.SaveChanges();
         }
-        public void updateReservation(Reservation original, Reservation modified)
+        public void UpdateReservation(Reservation original, Reservation modified)
         {
             context.Reservationen.Attach(original);
             context.Entry(original).CurrentValues.SetValues(modified);
@@ -128,7 +128,7 @@ namespace AutoReservation.BusinessLayer
             }
         }
 
-        public void addReservation(Reservation reservation)
+        public void AddReservation(Reservation reservation)
         {
             context.Reservationen.Add(reservation);
             context.SaveChanges();
