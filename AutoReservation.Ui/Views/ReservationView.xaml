@@ -4,7 +4,9 @@
     xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:Common="clr-namespace:AutoReservation.Common.DataTransferObjects;assembly=AutoReservation.Common"
     xmlns:Converters="clr-namespace:AutoReservation.Ui.Converters"
-    xmlns:ViewModels="clr-namespace:AutoReservation.Ui.ViewModels">
+    xmlns:ViewModels="clr-namespace:AutoReservation.Ui.ViewModels"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"         
+    >
     <UserControl.DataContext>
         <ViewModels:ReservationViewModel />
     </UserControl.DataContext>
@@ -113,9 +115,9 @@
                       SelectedItem="{Binding SelectedReservation.Kunde}"
                       IsSynchronizedWithCurrentItem="True"
                       />
-            
-            <DatePicker Grid.Column="1" Grid.Row="3" SelectedDate="{Binding SelectedReservation.Von}" DisplayDateEnd="12/31/2020" DisplayDateStart="1/1/1900" />
-            <DatePicker Grid.Column="1" Grid.Row="4" SelectedDate="{Binding SelectedReservation.Bis}" DisplayDateEnd="12/31/2020" DisplayDateStart="1/1/1900" />
+
+            <DatePicker Grid.Column="1" Grid.Row="3" SelectedDate="{Binding SelectedReservation.Von}" DisplayDateEnd="12/31/2020" DisplayDateStart="{x:Static sys:DateTime.Now}" />
+            <DatePicker Grid.Column="1" Grid.Row="4" SelectedDate="{Binding SelectedReservation.Bis}" DisplayDateEnd="12/31/2020" DisplayDateStart="{x:Static sys:DateTime.Now}" />
         </Grid>
     </Grid>
 </UserControl>

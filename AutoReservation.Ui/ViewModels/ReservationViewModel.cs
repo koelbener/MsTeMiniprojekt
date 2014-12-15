@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using AutoReservation.Common.DataTransferObjects;
+using System;
 
 namespace AutoReservation.Ui.ViewModels
 {
@@ -197,7 +198,7 @@ namespace AutoReservation.Ui.ViewModels
 
         private void New()
         {
-            Reservationen.Add(new ReservationDto());
+            Reservationen.Add(new ReservationDto() { Von = DateTime.Today, Bis = DateTime.Today });
         }
 
         private bool CanNew()
