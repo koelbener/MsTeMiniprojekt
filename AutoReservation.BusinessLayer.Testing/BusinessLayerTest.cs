@@ -62,7 +62,7 @@ namespace AutoReservation.BusinessLayer.Testing
             Kunde newLoaded = Target.GetKunde(1);
             Assert.AreEqual("Moser", newLoaded.Nachname);
             Assert.AreEqual("Hansueli", newLoaded.Vorname);
-            Assert.IsTrue(now.CompareTo(newLoaded.Geburtsdatum) == 1);
+            CompareDates(now, newLoaded.Geburtsdatum);
         }
 
         public void UpdateAutoTestWithNewRelation()
@@ -94,9 +94,17 @@ namespace AutoReservation.BusinessLayer.Testing
             reservation.Von = newDate;
             reservation.Bis = newDate.AddHours(1);
             Target.UpdateReservation(Target.GetReservation(1), reservation);
-            Assert.IsTrue(newDate.CompareTo(Target.GetReservation(1).Von) == 1);
-            Assert.IsTrue(newDate.AddHours(1).CompareTo(Target.GetReservation(1).Bis) == 1);
+
+            Assert.IsTrue(newDate.ToString("MM/dd/yy H:mm:ss").Equals(Target.GetReservation(1).Von.ToString("MM/dd/yy H:mm:ss")));
+            CompareDates(newDate, Target.GetReservation(1).Von);
+            CompareDates(newDate.AddHours(1), Target.GetReservation(1).Bis);
         }
+
+        public void CompareDates(DateTime first, DateTime second)
+        {
+            Assert.AreEqual(first.ToString("MM/dd/yy H:mm:ss"), second.ToString("MM/dd/yy H:mm:ss"));
+        }
+
         /*
         [TestMethod]
         public void UpdateReservationOwnerTest()

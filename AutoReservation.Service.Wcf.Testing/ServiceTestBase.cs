@@ -146,7 +146,7 @@ namespace AutoReservation.Service.Wcf.Testing
             KundeDto newLoaded = Target.GetKunde(1);
             Assert.AreEqual("Moser", newLoaded.Nachname);
             Assert.AreEqual("Hansueli", newLoaded.Vorname);
-            Assert.IsTrue(now.CompareTo(newLoaded.Geburtsdatum) == 1);
+            CompareDates(now, newLoaded.Geburtsdatum);
         }
 
         [TestMethod]
@@ -158,8 +158,16 @@ namespace AutoReservation.Service.Wcf.Testing
             reservation.Bis = newDate.AddHours(1);
             Target.UpdateReservation(Target.GetReservation(1), reservation);
 
-            Assert.IsTrue(newDate.CompareTo(Target.GetReservation(1).Von) == 1);
+            CompareDates(newDate, Target.GetReservation(1).Von);
             Assert.IsTrue(newDate.AddHours(1).CompareTo(Target.GetReservation(1).Bis) == 1);
+            CompareDates(newDate.AddHours(1), Target.GetReservation(1).Bis);
+            CompareDates(newDate, Target.GetReservation(1).Von);
+            CompareDates(newDate.AddHours(1), Target.GetReservation(1).Bis);
+        }
+
+        public void CompareDates(DateTime first, DateTime second)
+        {
+            Assert.AreEqual(first.ToString("MM/dd/yy H:mm:ss"), second.ToString("MM/dd/yy H:mm:ss"));
         }
 
 
