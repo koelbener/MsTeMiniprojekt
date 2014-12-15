@@ -107,7 +107,7 @@ namespace AutoReservation.Ui.ViewModels
                 else
                 {
                     KundeDto original = kundenOriginal.FirstOrDefault(ao => ao.Id == kunde.Id);
-                    Service.UpdateKunde(kunde, original);
+                    Service.UpdateKunde(original, kunde);
                 }
             }
             Load();

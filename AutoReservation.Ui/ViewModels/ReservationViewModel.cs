@@ -146,7 +146,7 @@ namespace AutoReservation.Ui.ViewModels
                 else
                 {
                     ReservationDto original = reservationenOriginal.FirstOrDefault(ao => ao.ReservationNr == res.ReservationNr);
-                    Service.UpdateReservation(res, original);
+                    Service.UpdateReservation(original, res);
                 }
             }
             Load();
