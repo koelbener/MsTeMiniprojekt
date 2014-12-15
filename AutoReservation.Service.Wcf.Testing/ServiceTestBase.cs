@@ -161,10 +161,20 @@ namespace AutoReservation.Service.Wcf.Testing
             Assert.AreEqual(newDate.AddHours(1), Target.GetReservation(1).Bis);
         }
 
+        [ExpectedException(typeof(FaultException))]
         [TestMethod]
         public void UpdateAutoTestWithOptimisticConcurrency()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            AutoDto old = Target.GetAuto(1);
+            AutoDto auto1 = Target.GetAuto(1);
+
+            AutoDto auto2 = Target.GetAuto(1);
+            auto2.Marke = "TestMarke";
+            Target.UpdateAuto(Target.GetAuto(1), auto2);
+
+            auto1.Marke = "NewTestMarke";
+            Target.UpdateAuto(old, auto1);
+            Assert.AreEqual("TestMarke", Target.GetAuto(1));
         }
 
         [TestMethod]
