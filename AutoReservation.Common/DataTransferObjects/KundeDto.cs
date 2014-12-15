@@ -60,7 +60,7 @@ namespace AutoReservation.Common.DataTransferObjects
             get { return geburtsdatum; }
             set
             {
-                if (geburtsdatum == null || !geburtsdatum.Equals(geburtsdatum))
+                if (geburtsdatum == null || !geburtsdatum.Equals(value))
                 {
                     this.geburtsdatum = value;
                     RaisePropertyChanged();
