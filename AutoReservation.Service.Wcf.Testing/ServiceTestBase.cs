@@ -1,5 +1,6 @@
 ﻿using AutoReservation.Common.DataTransferObjects;
 using AutoReservation.Common.Interfaces;
+using AutoReservation.Dal;
 using AutoReservation.TestEnvironment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -151,7 +152,13 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void UpdateReservationTest()
         {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
+            ReservationDto reservation = Target.GetReservation(1);
+            DateTime newDate = DateTime.Now;
+            reservation.Von = newDate;
+            reservation.Bis = newDate.AddHours(1);
+            Target.UpdateReservation(Target.GetReservation(1), reservation);
+            Assert.AreEqual(newDate, Target.GetReservation(1).Von);
+            Assert.AreEqual(newDate.AddHours(1), Target.GetReservation(1).Bis);
         }
 
         [TestMethod]
