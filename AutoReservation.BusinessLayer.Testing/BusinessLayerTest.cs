@@ -97,7 +97,7 @@ namespace AutoReservation.BusinessLayer.Testing
             Assert.IsTrue(newDate.CompareTo(Target.GetReservation(1).Von) == 1);
             Assert.IsTrue(newDate.AddHours(1).CompareTo(Target.GetReservation(1).Bis) == 1);
         }
-
+        /*
         [TestMethod]
         public void UpdateReservationOwnerTest()
         {
@@ -114,6 +114,7 @@ namespace AutoReservation.BusinessLayer.Testing
             Assert.AreEqual(Target.GetReservation(1).Kunde, newOwner);
             Assert.AreEqual(Target.GetReservation(1).KundeId, newOwner.Id);
         }
+         * */
 
         private Kunde createKunde()
         {

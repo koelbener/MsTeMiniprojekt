@@ -162,33 +162,7 @@ namespace AutoReservation.Service.Wcf.Testing
             Assert.IsTrue(newDate.AddHours(1).CompareTo(Target.GetReservation(1).Bis) == 1);
         }
 
-        [ExpectedException(typeof(FaultException))]
-        [TestMethod]
-        public void UpdateAutoTestWithOptimisticConcurrency()
-        {
-            AutoDto old = Target.GetAuto(1);
-            AutoDto auto1 = Target.GetAuto(1);
 
-            AutoDto auto2 = Target.GetAuto(1);
-            auto2.Marke = "TestMarke";
-            Target.UpdateAuto(Target.GetAuto(1), auto2);
-
-            auto1.Marke = "NewTestMarke";
-            Target.UpdateAuto(old, auto1);
-            Assert.AreEqual("TestMarke", Target.GetAuto(1));
-        }
-
-        [TestMethod]
-        public void UpdateKundeTestWithOptimisticConcurrency()
-        {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
-        }
-
-        [TestMethod]
-        public void UpdateReservationTestWithOptimisticConcurrency()
-        {
-            Assert.Inconclusive("Test wurde noch nicht implementiert!");
-        }
 
         [TestMethod]
         public void DeleteReservationTest()
