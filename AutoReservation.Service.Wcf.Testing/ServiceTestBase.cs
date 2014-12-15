@@ -146,7 +146,7 @@ namespace AutoReservation.Service.Wcf.Testing
             KundeDto newLoaded = Target.GetKunde(1);
             Assert.AreEqual("Moser", newLoaded.Nachname);
             Assert.AreEqual("Hansueli", newLoaded.Vorname);
-            Assert.AreEqual(now, newLoaded.Geburtsdatum);
+            Assert.IsTrue(now.CompareTo(newLoaded.Geburtsdatum) == 1);
         }
 
         [TestMethod]
