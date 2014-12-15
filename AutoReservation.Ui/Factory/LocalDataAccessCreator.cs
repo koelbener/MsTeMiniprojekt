@@ -12,7 +12,7 @@ namespace AutoReservation.Ui.Factory
     {
         public override IAutoReservationService CreateInstance()
         {
-            return new AutoReservationServiceRemote();
+            return new AutoReservationService();
         }
     }
 }

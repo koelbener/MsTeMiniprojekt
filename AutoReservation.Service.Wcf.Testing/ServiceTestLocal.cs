@@ -14,7 +14,7 @@ namespace AutoReservation.Service.Wcf.Testing
             {
                 if (target == null)
                 {
-                    target = new AutoReservationServiceRemote();
+                    target = new AutoReservationService();
                 }
                 return target;
             }
